@@ -21,9 +21,9 @@ module TestHTTPCookieJar
           HTTP::CookieJar::ErroneousStore
         }
         if RUBY_VERSION >= "1.9"
-          assert_includes $LOADED_FEATURES, rb
+          assert($LOADED_FEATURES.select { |file| file =~ %r|#{rb}| })
         else
-          assert_includes $LOADED_FEATURES, rb[(dir.size + 1)..-1]
+          assert($LOADED_FEATURES.select { |file| file =~ %r|#{rb[(dir.size + 1)..-1]}|})
         end
       }
     end
@@ -46,9 +46,9 @@ module TestHTTPCookieJar
           HTTP::CookieJar::ErroneousSaver
         }
         if RUBY_VERSION >= "1.9"
-          assert_includes $LOADED_FEATURES, rb
+          assert($LOADED_FEATURES.select { |file| file =~ %r|#{rb}| })
         else
-          assert_includes $LOADED_FEATURES, rb[(dir.size + 1)..-1]
+          assert($LOADED_FEATURES.select { |file| file =~ %r|#{rb[(dir.size + 1)..-1]}|})
         end
       }
     end
